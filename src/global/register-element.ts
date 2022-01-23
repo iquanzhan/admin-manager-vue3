@@ -1,4 +1,5 @@
 import { App } from 'vue'
+import 'element-plus/lib/theme-chalk/base.css'
 import {
   ElButton,
   ElTable,
@@ -21,7 +22,7 @@ const components = [
   ElBadge
 ]
 
-export function elementRegister(app: App): void {
+export function registerElement(app: App): void {
   for (const cpn of components) {
     app.component(cpn.name, cpn)
   }
