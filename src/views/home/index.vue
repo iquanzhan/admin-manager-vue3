@@ -1,5 +1,11 @@
 <template>
-  <div>home</div>
+  <div>
+    home
+
+    <div>
+      <el-button type="primary">你好</el-button>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
