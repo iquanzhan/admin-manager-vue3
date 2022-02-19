@@ -1,11 +1,5 @@
 <template>
-  <div>
-    home
-
-    <div>
-      <el-button type="primary">你好</el-button>
-    </div>
-  </div>
+  <div>login</div>
 </template>
 
 <script lang="ts">
