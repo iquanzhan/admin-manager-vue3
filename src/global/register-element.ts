@@ -8,7 +8,13 @@ import {
   ElAutocomplete,
   ElAvatar,
   ElBacktop,
-  ElBadge
+  ElBadge,
+  ElForm,
+  ElInput,
+  ElFormItem,
+  ElCheckbox,
+  ElLink,
+  ElCard
 } from 'element-plus'
 
 const components = [
@@ -19,7 +25,13 @@ const components = [
   ElAutocomplete,
   ElAvatar,
   ElBacktop,
-  ElBadge
+  ElBadge,
+  ElForm,
+  ElInput,
+  ElFormItem,
+  ElCheckbox,
+  ElLink,
+  ElCard
 ]
 
 export function registerElement(app: App): void {
