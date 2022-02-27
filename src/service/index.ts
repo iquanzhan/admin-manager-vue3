@@ -1,6 +1,7 @@
 import AMRequest from './request'
+import localCache from '@/utils/cache'
 
-const BASE_URL = 'http://152.136.185.210:5000'
+const BASE_URL = 'http://localhost:9999'
 const TIMEOUT = 15000
 
 const amRequest = new AMRequest({
@@ -8,9 +9,9 @@ const amRequest = new AMRequest({
   timeout: TIMEOUT,
   interceptors: {
     requestInterceptor: (config) => {
-      const token = ''
+      const token = localCache.getCache('token')
       if (token && config.headers) {
-        config.headers.Authorization = token
+        config.headers.Authentication = token
       }
       return config
     }

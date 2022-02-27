@@ -9,8 +9,8 @@
           :model="account"
           ref="formRef"
         >
-          <el-form-item label="账号" prop="name">
-            <el-input v-model="account.name" />
+          <el-form-item label="账号" prop="userName">
+            <el-input v-model="account.userName" />
           </el-form-item>
           <el-form-item label="密码" prop="password">
             <el-input v-model="account.password" />
@@ -32,13 +32,17 @@
 import { ElForm } from 'element-plus'
 import { defineComponent, reactive, ref } from 'vue'
 import { rules } from '../config/account-config'
+import localCache from '@/utils/cache'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   components: {},
   setup() {
+    const store = useStore()
+
     const account = reactive({
-      name: '',
-      password: ''
+      userName: localCache.getCache('userName'),
+      password: localCache.getCache('password')
     })
     const formRef = ref<InstanceType<typeof ElForm>>()
 
@@ -46,7 +50,14 @@ export default defineComponent({
     const handleLoginClick = () => {
       formRef.value?.validate((valid) => {
         if (valid) {
-          console.log('登录')
+          if (isKeepPassword.value) {
+            localCache.setCache('userName', account.userName)
+            localCache.setCache('password', account.password)
+          } else {
+            localCache.deleteCache('userName')
+            localCache.deleteCache('password')
+          }
+          store.dispatch('login/login', { ...account })
         }
       })
     }
